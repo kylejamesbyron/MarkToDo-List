@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for row in rows %}
+
+{{row['todo']}} status:  {{row['status']}}
+<form action="/updatestatus/{{row['ID']}}" method="post"> <input name="updatestatus" value="complete" type="submit"><br> 
+  </form><br>
+notes: {{row['notes']}}<br>
+tags:  {{row['tags']}}<br><br>
+
+{% endfor %}
+
+
+<form action="/newtodo" method="post"> 
+    
+  New: <textarea cols="20" rows="1" name="newtodo"></textarea>&nbsp;
+  Notes: <textarea cols="20" rows="1" name="newnotes"></textarea>&nbsp;
+  Tags: <textarea cols="20" rows="1" name="newtags"></textarea>&nbsp;
+
+  <input name="save" value="save" type="submit"><br> 
+  </form>
+
+{% endblock %}
+
